@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4 text-primary">Edit Student</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="id" class="form-label">ID:</label>
+            <input type="text" id="id" name="id" value="{{ student[0] }}" class="form-control" readonly>
+        </div>
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" id="name" name="name" value="{{ student[1] }}" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="course" class="form-label">Course:</label>
+            <select id="course" name="course" class="form-select" required>
+                {% for c in courses %}
+                    <option value="{{ c[1] }}" {% if c[1] == student[2] %}selected{% endif %}>{{ c[1] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success">Update Student</button>
+        <a href="{{ url_for('view_students') }}" class="btn btn-secondary ms-2">Cancel</a>
+    </form>
+</div>
+{% endblock %}  this is not working to edit or delete any students data
